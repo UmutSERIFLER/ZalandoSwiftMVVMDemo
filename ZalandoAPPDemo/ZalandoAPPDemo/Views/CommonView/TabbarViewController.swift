@@ -20,7 +20,7 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        self.tabBar.tintColor = UIColor(red: 255/255, green: 126/255, blue: 0/255, alpha: 1.0)
+        self.tabBar.tintColor = .orange
         viewControllersArray = []
         viewControllersArray?.append(setViewControllerForTabBarItem(itemType: .Category))
         viewControllersArray?.append(setViewControllerForTabBarItem(itemType: .Favourite))
