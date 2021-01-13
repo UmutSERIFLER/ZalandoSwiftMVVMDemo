@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -97,6 +97,12 @@
 		9D69E73E25AF678000A025EE /* FilterOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D69E73C25AF678000A025EE /* FilterOptionTableViewCell.xib */; };
 		9D69E74425AF6D6100A025EE /* ChooserPopoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E74325AF6D6100A025EE /* ChooserPopoverViewModel.swift */; };
 		9D69E74525AF6D6100A025EE /* ChooserPopoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E74325AF6D6100A025EE /* ChooserPopoverViewModel.swift */; };
+		9D69E7A125AF90B700A025EE /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E7A025AF90B700A025EE /* MockAPIService.swift */; };
+		9D69E7AB25AF920500A025EE /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D69E7AA25AF920500A025EE /* categories.json */; };
+		9D69E7B525AF921900A025EE /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E7B425AF921900A025EE /* ResourceLoader.swift */; };
+		9D69E7BF25AF924A00A025EE /* catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D69E7BE25AF924A00A025EE /* catalog.json */; };
+		9D69E7CA25AF92D800A025EE /* CategoryViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E7C925AF92D800A025EE /* CategoryViewTest.swift */; };
+		9D69E7EE25AF95FF00A025EE /* CategoryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E7ED25AF95FF00A025EE /* CategoryViewModelTest.swift */; };
 		9D8C5ED125AF0C0E00712452 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8C5ED025AF0C0E00712452 /* AppDelegate.swift */; };
 		9D8C5EDA25AF0C1100712452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D8C5ED925AF0C1100712452 /* Assets.xcassets */; };
 		9D8C5EDD25AF0C1100712452 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8C5EDB25AF0C1100712452 /* LaunchScreen.storyboard */; };
@@ -170,6 +176,12 @@
 		9D69E73525AF674F00A025EE /* FilterOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionTableViewCell.swift; sourceTree = "<group>"; };
 		9D69E73C25AF678000A025EE /* FilterOptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterOptionTableViewCell.xib; sourceTree = "<group>"; };
 		9D69E74325AF6D6100A025EE /* ChooserPopoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooserPopoverViewModel.swift; sourceTree = "<group>"; };
+		9D69E7A025AF90B700A025EE /* MockAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
+		9D69E7AA25AF920500A025EE /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
+		9D69E7B425AF921900A025EE /* ResourceLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceLoader.swift; sourceTree = "<group>"; };
+		9D69E7BE25AF924A00A025EE /* catalog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = catalog.json; sourceTree = "<group>"; };
+		9D69E7C925AF92D800A025EE /* CategoryViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewTest.swift; sourceTree = "<group>"; };
+		9D69E7ED25AF95FF00A025EE /* CategoryViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTest.swift; sourceTree = "<group>"; };
 		9D8C5ECD25AF0C0E00712452 /* ZalandoAPPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZalandoAPPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8C5ED025AF0C0E00712452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D8C5ED925AF0C1100712452 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -427,6 +439,58 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		9D69E79C25AF907A00A025EE /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				9D69E7EC25AF95F500A025EE /* ViewModels */,
+				9D69E7C825AF92D000A025EE /* View */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		9D69E79D25AF908300A025EE /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				9D69E79F25AF90A100A025EE /* Services */,
+				9D69E79E25AF909300A025EE /* Resources */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		9D69E79E25AF909300A025EE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9D69E7AA25AF920500A025EE /* categories.json */,
+				9D69E7BE25AF924A00A025EE /* catalog.json */,
+				9D69E7B425AF921900A025EE /* ResourceLoader.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9D69E79F25AF90A100A025EE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9D69E7A025AF90B700A025EE /* MockAPIService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		9D69E7C825AF92D000A025EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D69E7C925AF92D800A025EE /* CategoryViewTest.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D69E7EC25AF95F500A025EE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9D69E7ED25AF95FF00A025EE /* CategoryViewModelTest.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		9D8C5EC425AF0C0E00712452 = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +537,8 @@
 		9D8C5EE625AF0C1100712452 /* ZalandoAPPDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				9D69E79C25AF907A00A025EE /* Module */,
+				9D69E79D25AF908300A025EE /* Mock */,
 				9D8C5EE725AF0C1100712452 /* ZalandoAPPDemoTests.swift */,
 				9D8C5EE925AF0C1100712452 /* Info.plist */,
 			);
@@ -630,6 +696,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D69E7BF25AF924A00A025EE /* catalog.json in Resources */,
+				9D69E7AB25AF920500A025EE /* categories.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,7 +777,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D69E7EE25AF95FF00A025EE /* CategoryViewModelTest.swift in Sources */,
+				9D69E7A125AF90B700A025EE /* MockAPIService.swift in Sources */,
+				9D69E7CA25AF92D800A025EE /* CategoryViewTest.swift in Sources */,
 				9D8C5EE825AF0C1100712452 /* ZalandoAPPDemoTests.swift in Sources */,
+				9D69E7B525AF921900A025EE /* ResourceLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,6 +1003,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -951,6 +1024,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};
@@ -1055,6 +1129,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -1075,6 +1150,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};

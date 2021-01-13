@@ -19,14 +19,6 @@ target 'ZalandoAPPDemo' do
    
   default_zalando_pods
 
-  target 'ZalandoAPPDemoTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'ZalandoAPPDemoUITests' do
-    # Pods for testing
-  end
 
 end
 
@@ -37,4 +29,14 @@ target 'ZalandoAPPDemoDev' do
   default_zalando_pods
   # Pods for ZalandoAPPDemoDev
 
+end
+
+post_install do |pi|
+   pi.pods_project.targets.each do |t|
+       t.build_configurations.each do |bc|
+           if bc.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] == '8.0'
+             bc.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+           end
+       end
+   end
 end
