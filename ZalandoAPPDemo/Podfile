@@ -1,0 +1,42 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '12.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+def default_zalando_pods 
+ # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'Kingfisher'
+
+end
+
+target 'ZalandoAPPDemo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for ZalandoAPPDemo
+   
+  default_zalando_pods
+
+
+end
+
+target 'ZalandoAPPDemoDev' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  default_zalando_pods
+  # Pods for ZalandoAPPDemoDev
+
+end
+
+post_install do |pi|
+   pi.pods_project.targets.each do |t|
+       t.build_configurations.each do |bc|
+           if bc.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] == '8.0'
+             bc.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+           end
+       end
+   end
+end

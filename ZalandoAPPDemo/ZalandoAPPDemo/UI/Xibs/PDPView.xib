@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDPView" customModule="ZalandoAPPDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="QEW-Vb-NWz"/>
+                <outlet property="productDescription" destination="rRp-zZ-oMh" id="jgc-xY-2cF"/>
+                <outlet property="productImage" destination="GBI-a6-vQ5" id="UH3-1o-cbI"/>
+                <outlet property="productName" destination="WXo-SJ-bbK" id="Dvz-Xd-OkA"/>
+                <outlet property="productPrice" destination="axy-Hl-P1m" id="bI6-S3-Kz0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GBI-a6-vQ5">
+                    <rect key="frame" x="20.5" y="88" width="373" height="298.5"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProductName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXo-SJ-bbK" userLabel="ProductName">
+                    <rect key="frame" x="20.5" y="396.5" width="373" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="3TB-TP-wXw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProductDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRp-zZ-oMh">
+                    <rect key="frame" x="20.5" y="436.5" width="373" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axy-Hl-P1m">
+                    <rect key="frame" x="20.5" y="467" width="373" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="rRp-zZ-oMh" firstAttribute="width" secondItem="WXo-SJ-bbK" secondAttribute="width" id="3rF-d4-JmL"/>
+                <constraint firstItem="axy-Hl-P1m" firstAttribute="top" secondItem="rRp-zZ-oMh" secondAttribute="bottom" constant="10" id="9hV-ZJ-Fw3"/>
+                <constraint firstItem="rRp-zZ-oMh" firstAttribute="top" secondItem="WXo-SJ-bbK" secondAttribute="bottom" constant="10" id="KNs-dv-SA5"/>
+                <constraint firstItem="WXo-SJ-bbK" firstAttribute="width" secondItem="GBI-a6-vQ5" secondAttribute="width" id="LWk-ey-7Dh"/>
+                <constraint firstItem="WXo-SJ-bbK" firstAttribute="top" secondItem="GBI-a6-vQ5" secondAttribute="bottom" constant="10" id="UP8-yA-ddP"/>
+                <constraint firstItem="GBI-a6-vQ5" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9:1" id="Uay-Rf-eL4"/>
+                <constraint firstItem="axy-Hl-P1m" firstAttribute="width" secondItem="rRp-zZ-oMh" secondAttribute="width" id="ZB1-eF-kfm"/>
+                <constraint firstItem="GBI-a6-vQ5" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1:3" id="cQT-JV-DMY"/>
+                <constraint firstItem="axy-Hl-P1m" firstAttribute="centerX" secondItem="rRp-zZ-oMh" secondAttribute="centerX" id="fkb-Kr-upF"/>
+                <constraint firstItem="GBI-a6-vQ5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="44" id="iBE-ZA-iGf"/>
+                <constraint firstItem="rRp-zZ-oMh" firstAttribute="centerX" secondItem="WXo-SJ-bbK" secondAttribute="centerX" id="icX-dM-L3g"/>
+                <constraint firstItem="GBI-a6-vQ5" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="sm1-UG-sFj"/>
+                <constraint firstItem="axy-Hl-P1m" firstAttribute="height" secondItem="WXo-SJ-bbK" secondAttribute="height" id="tcS-1e-ugO"/>
+                <constraint firstItem="WXo-SJ-bbK" firstAttribute="centerX" secondItem="GBI-a6-vQ5" secondAttribute="centerX" id="uKv-p6-LhJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="0.0" y="140.625"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
