@@ -31,7 +31,7 @@ class ProductCollectionViewCell: UICollectionViewCell, ConfigurableCell {
     fileprivate lazy var productImage : UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleToFill
         iv.clipsToBounds = true
         return iv
     }()

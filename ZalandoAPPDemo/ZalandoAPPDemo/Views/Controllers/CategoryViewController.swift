@@ -14,8 +14,8 @@ class CategoryViewController: UIViewController {
     private(set) var productDataSource: ProductDataSource?
     
     lazy var rightBarButtonItem : UIBarButtonItem = {
-        var rightBarButton = UIBarButtonItem(title: "List", style: .done, target: self, action: #selector(sortList))
-        rightBarButton.tintColor = .black
+        var rightBarButton = UIBarButtonItem(title: "Filter", style: .done, target: self, action: #selector(sortList))
+        rightBarButton.tintColor = .orange
         return rightBarButton
     }()
     
