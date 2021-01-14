@@ -8,8 +8,8 @@
 import UIKit
 
 class FavouriteViewController: UIViewController {
-
-    var favouriteCollectionView: UICollectionView!
+    
+    var favouriteCollectionView: UICollectionView?
     private(set) var productDataSource: ProductDataSource?
     
     init(collectionView: UICollectionView = BaseCollectionView(cellArray: [ProductCollectionViewCell.self])) {
@@ -21,10 +21,11 @@ class FavouriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(favouriteCollectionView)
-        favouriteCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        favouriteCollectionView.frame = view.frame
         self.title = "Favourite Products"
+        guard let collectionView = favouriteCollectionView else { return }
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.frame = view.frame
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,9 +37,10 @@ class FavouriteViewController: UIViewController {
 //// MARK: - Private Methods
 fileprivate extension FavouriteViewController {
     func setUpDataSource() -> ProductDataSource? {
-        let dataSource = ProductDataSource(collectionView: self.favouriteCollectionView, array: [FavouriteProducts().getProducts()], cellConfig: [CellConfigModel(cellHeight: 300)])
+        guard let collectionView = favouriteCollectionView else { return nil }
+        let dataSource = ProductDataSource(collectionView: collectionView, array: [FavouriteProducts().getProducts()], cellConfig: [CellConfigModel(cellHeight: 300)])
         dataSource.collectionItemSelectionHandler = { [weak self] indexPath in
-            if let productCell: ProductCollectionViewCell = self?.favouriteCollectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell, let product = productCell.product {
+            if let productCell: ProductCollectionViewCell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell, let product = productCell.product {
                 DispatchQueue.main.async {
                     self?.navigationController?.pushViewController(ProductDetailViewController(product: product), animated: true)
                 }

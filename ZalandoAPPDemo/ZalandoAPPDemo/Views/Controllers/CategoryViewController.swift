@@ -10,7 +10,7 @@ import UIKit
 class CategoryViewController: UIViewController {
 
     var categoryViewModel: CategoryViewModel?
-    var categoryCollectionView: UICollectionView!
+    var categoryCollectionView: UICollectionView?
     private(set) var productDataSource: ProductDataSource?
     
     lazy var rightBarButtonItem : UIBarButtonItem = {
@@ -29,12 +29,12 @@ class CategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(categoryCollectionView)
-        categoryCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        categoryCollectionView.frame = view.frame
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        guard let collectionView = self.categoryCollectionView else { return }
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.frame = view.frame
         self.initViewModel()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,12 +79,12 @@ class ProductDataSource: CollectionArrayDataSource<Product, ProductCollectionVie
 //// MARK: - Private Methods
 fileprivate extension CategoryViewController {
     func setUpDataSource(filter: String? = nil) -> ProductDataSource? {
-        guard let products = categoryViewModel?.getProducts(withFilter: filter) else {
+        guard let products = categoryViewModel?.getProducts(withFilter: filter), let collectionView = self.categoryCollectionView else {
             return nil
         }
-        let dataSource = ProductDataSource(collectionView: self.categoryCollectionView, array: [products], cellConfig: [CellConfigModel(cellHeight: 300)])
+        let dataSource = ProductDataSource(collectionView: collectionView, array: [products], cellConfig: [CellConfigModel(cellHeight: 300)])
         dataSource.collectionItemSelectionHandler = { [weak self] indexPath in
-            if let productCell: ProductCollectionViewCell = self?.categoryCollectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell, let product = productCell.product {
+            if let productCell: ProductCollectionViewCell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell, let product = productCell.product {
                 DispatchQueue.main.async {
                     self?.navigationController?.pushViewController(ProductDetailViewController(product: product), animated: true)
                 }
