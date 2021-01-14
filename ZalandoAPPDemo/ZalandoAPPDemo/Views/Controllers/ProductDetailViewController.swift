@@ -23,6 +23,6 @@ class ProductDetailViewController: UIViewController {
         let pdpView = PDPView(frame: self.view.frame)
         pdpView.setProductInformations(product: product)
         self.view.addSubview(pdpView)
-    
+        self.title = product.title
     }
 }

@@ -42,6 +42,7 @@ open class CollectionDataSource<Provider: GenericDataProvider, Cell: UICollectio
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        provider.numberOfItems(in: section) == 0 ? collectionView.setEmptyMessage("There is no product to show") : collectionView.restore()
         return provider.numberOfItems(in: section)
     }
 
