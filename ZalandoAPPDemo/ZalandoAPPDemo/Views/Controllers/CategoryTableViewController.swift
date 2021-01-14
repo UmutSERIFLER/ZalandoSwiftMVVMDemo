@@ -10,7 +10,7 @@ import UIKit
 class CategoryTableViewController: UIViewController {
     
     var categoryTableViewModel: CategoryTableViewModel?
-    var categoryTableView: UITableView!
+    var categoryTableView: UITableView?
     private(set) var productDataSource: ProductTVDataSource?
     
     init(viewModel: CategoryTableViewModel = CategoryTableViewModel(), tableView: UITableView = BaseTableView(cellArray: [ProductTableViewCell.self])) {
@@ -23,9 +23,10 @@ class CategoryTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(categoryTableView)
-        categoryTableView.translatesAutoresizingMaskIntoConstraints = false
-        categoryTableView.frame = view.frame
+        guard let tableView = self.categoryTableView else { return }
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.frame = view.frame
         self.initViewModel()
         // Do any additional setup after loading the view.
     }
@@ -57,12 +58,12 @@ class ProductTVDataSource: TableArrayDataSource<Product, ProductTableViewCell> {
 //// MARK: - Private Methods
 fileprivate extension CategoryTableViewController {
     func setUpDataSource() -> ProductTVDataSource? {
-        guard let products = categoryTableViewModel?.getProducts() else {
+        guard let products = categoryTableViewModel?.getProducts(), let tableView = categoryTableView else {
             return nil
         }
-        let dataSource = ProductTVDataSource(tableView: categoryTableView, array: [products], cellConfig: [CellConfigModel(cellHeight: 100)])
+        let dataSource = ProductTVDataSource(tableView: tableView, array: [products], cellConfig: [CellConfigModel(cellHeight: 100)])
         dataSource.tableItemSelectionHandler = { [weak self] indexPath in
-            if let productCell: ProductTableViewCell = self?.categoryTableView.cellForRow(at: indexPath) as? ProductTableViewCell, let product = productCell.product {
+            if let productCell: ProductTableViewCell = tableView.cellForRow(at: indexPath) as? ProductTableViewCell, let product = productCell.product {
                 DispatchQueue.main.async {
                     self?.navigationController?.pushViewController(ProductDetailViewController(product: product), animated: true)
                 }
