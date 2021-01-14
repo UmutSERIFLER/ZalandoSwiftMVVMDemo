@@ -12,7 +12,7 @@ struct CellConfigModel {
     var sectionHeaderHeight: Int
     var sectionHeaderView: UIView
     
-    init(cellHeight: Int = 50,sectionHeaderHeight: Int = 50, sectionHeaderView: UIView = UIView()) {
+    init(cellHeight: Int = 50, sectionHeaderHeight: Int = 0, sectionHeaderView: UIView = UIView()) {
         self.cellHeight = cellHeight
         self.sectionHeaderHeight = sectionHeaderHeight
         self.sectionHeaderView = sectionHeaderView

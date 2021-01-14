@@ -77,10 +77,12 @@ class ChooserPopoverTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let filterCell : FilterOptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: FilterOptionTableViewCell.identifier, for: indexPath) as? FilterOptionTableViewCell {
+            filterCell.filterName.text = self.values[indexPath.row]
+            return filterCell
+        }
         
-        let filterCell : FilterOptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: FilterOptionTableViewCell.identifier, for: indexPath) as! FilterOptionTableViewCell
-        filterCell.filterName.text = self.values[indexPath.row]
-        return filterCell
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

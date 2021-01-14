@@ -50,8 +50,7 @@ open class TableDataSource<Provider: GenericDataProvider, Cell: UITableViewCell>
             return UITableViewCell()
         }
         
-        let item = provider.item(at: indexPath)
-        if let item = item {
+        if let item = provider.item(at: indexPath) {
             cell.configure(item, at: indexPath)
         }
         return cell
