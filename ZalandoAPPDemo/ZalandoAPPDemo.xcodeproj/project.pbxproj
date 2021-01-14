@@ -105,6 +105,12 @@
 		9D69E7EE25AF95FF00A025EE /* CategoryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E7ED25AF95FF00A025EE /* CategoryViewModelTest.swift */; };
 		9D69E80E25B01F5B00A025EE /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E80D25B01F5B00A025EE /* UICollectionView+Extension.swift */; };
 		9D69E80F25B01F5B00A025EE /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E80D25B01F5B00A025EE /* UICollectionView+Extension.swift */; };
+		9D69E82B25B0250F00A025EE /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E82A25B0250F00A025EE /* ProductTableViewCell.swift */; };
+		9D69E82C25B0250F00A025EE /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E82A25B0250F00A025EE /* ProductTableViewCell.swift */; };
+		9D69E83225B0279900A025EE /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E83125B0279900A025EE /* CategoryTableViewController.swift */; };
+		9D69E83325B0279900A025EE /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E83125B0279900A025EE /* CategoryTableViewController.swift */; };
+		9D69E83D25B027AB00A025EE /* CategoryTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E83C25B027AB00A025EE /* CategoryTableViewModel.swift */; };
+		9D69E83E25B027AB00A025EE /* CategoryTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69E83C25B027AB00A025EE /* CategoryTableViewModel.swift */; };
 		9D8C5ED125AF0C0E00712452 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8C5ED025AF0C0E00712452 /* AppDelegate.swift */; };
 		9D8C5EDA25AF0C1100712452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D8C5ED925AF0C1100712452 /* Assets.xcassets */; };
 		9D8C5EDD25AF0C1100712452 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8C5EDB25AF0C1100712452 /* LaunchScreen.storyboard */; };
@@ -185,6 +191,9 @@
 		9D69E7C925AF92D800A025EE /* CategoryViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewTest.swift; sourceTree = "<group>"; };
 		9D69E7ED25AF95FF00A025EE /* CategoryViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTest.swift; sourceTree = "<group>"; };
 		9D69E80D25B01F5B00A025EE /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		9D69E82A25B0250F00A025EE /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		9D69E83125B0279900A025EE /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		9D69E83C25B027AB00A025EE /* CategoryTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewModel.swift; sourceTree = "<group>"; };
 		9D8C5ECD25AF0C0E00712452 /* ZalandoAPPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZalandoAPPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8C5ED025AF0C0E00712452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D8C5ED925AF0C1100712452 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -274,6 +283,7 @@
 			children = (
 				9D69E58325AF15EE00A025EE /* CategoryViewModel.swift */,
 				9D69E74325AF6D6100A025EE /* ChooserPopoverViewModel.swift */,
+				9D69E83C25B027AB00A025EE /* CategoryTableViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -417,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				9D69E64A25AF2EEC00A025EE /* ProductCollectionViewCell.swift */,
+				9D69E82A25B0250F00A025EE /* ProductTableViewCell.swift */,
 				9D69E6FB25AF607600A025EE /* PDPView.swift */,
 				9D69E73525AF674F00A025EE /* FilterOptionTableViewCell.swift */,
 			);
@@ -439,6 +450,7 @@
 				9D69E57B25AF140700A025EE /* FavouriteViewController.swift */,
 				9D69E5C625AF201B00A025EE /* ProductDetailViewController.swift */,
 				9D69E72A25AF66ED00A025EE /* ChooserPopoverTableViewController.swift */,
+				9D69E83125B0279900A025EE /* CategoryTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -733,6 +745,7 @@
 			files = (
 				9D69E66F25AF406200A025EE /* FavouriteProducts.swift in Sources */,
 				9D69E6FC25AF607600A025EE /* PDPView.swift in Sources */,
+				9D69E82B25B0250F00A025EE /* ProductTableViewCell.swift in Sources */,
 				9D69E5A825AF16E800A025EE /* JSONParameterEncoder.swift in Sources */,
 				9D69E61025AF2BE800A025EE /* TableArrayDataSource.swift in Sources */,
 				9D69E5EC25AF21B200A025EE /* ZalandoAPIProvider.swift in Sources */,
@@ -745,9 +758,11 @@
 				9D69E56825AF134D00A025EE /* TabbarItemController.swift in Sources */,
 				9D69E80E25B01F5B00A025EE /* UICollectionView+Extension.swift in Sources */,
 				9D69E58425AF15EE00A025EE /* CategoryViewModel.swift in Sources */,
+				9D69E83225B0279900A025EE /* CategoryTableViewController.swift in Sources */,
 				9D8C5ED125AF0C0E00712452 /* AppDelegate.swift in Sources */,
 				9D69E61825AF2BF100A025EE /* CollectionArrayDataSource.swift in Sources */,
 				9D69E60E25AF2BE800A025EE /* TableDataSource.swift in Sources */,
+				9D69E83D25B027AB00A025EE /* CategoryTableViewModel.swift in Sources */,
 				9D69E5C025AF189A00A025EE /* ConnectionManager.swift in Sources */,
 				9D69E59825AF169000A025EE /* Router.swift in Sources */,
 				9D69E59A25AF169000A025EE /* HTTPTask.swift in Sources */,
@@ -804,6 +819,7 @@
 			files = (
 				9D69E59B25AF169000A025EE /* HTTPTask.swift in Sources */,
 				9D69E59925AF169000A025EE /* Router.swift in Sources */,
+				9D69E82C25B0250F00A025EE /* ProductTableViewCell.swift in Sources */,
 				9D69E6FD25AF607600A025EE /* PDPView.swift in Sources */,
 				9D69E59F25AF169000A025EE /* HTTPMethod.swift in Sources */,
 				9D69E59D25AF169000A025EE /* EndPointType.swift in Sources */,
@@ -816,9 +832,11 @@
 				9D69E5C125AF189A00A025EE /* ConnectionManager.swift in Sources */,
 				9D69E80F25B01F5B00A025EE /* UICollectionView+Extension.swift in Sources */,
 				9D69E5A925AF16E800A025EE /* JSONParameterEncoder.swift in Sources */,
+				9D69E83325B0279900A025EE /* CategoryTableViewController.swift in Sources */,
 				9D69E55425AF12C200A025EE /* UIView+Extension.swift in Sources */,
 				9D69E5B525AF173800A025EE /* ZalandoAPI.swift in Sources */,
 				9D69E57225AF13F100A025EE /* CategoryViewController.swift in Sources */,
+				9D69E83E25B027AB00A025EE /* CategoryTableViewModel.swift in Sources */,
 				9D69E56925AF134D00A025EE /* TabbarItemController.swift in Sources */,
 				9D69E57D25AF140700A025EE /* FavouriteViewController.swift in Sources */,
 				9D69E63625AF2D6F00A025EE /* CellConfigModel.swift in Sources */,

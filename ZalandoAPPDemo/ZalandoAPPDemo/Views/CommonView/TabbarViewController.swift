@@ -8,8 +8,9 @@
 import UIKit
 
 enum TabBarItems: String {
-    case Category
+    case CategoryCV
     case Favourite
+    case CategoryTV
 }
 
 class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
@@ -22,8 +23,9 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         self.tabBar.tintColor = .orange
         viewControllersArray = []
-        viewControllersArray?.append(setViewControllerForTabBarItem(itemType: .Category))
+        viewControllersArray?.append(setViewControllerForTabBarItem(itemType: .CategoryCV))
         viewControllersArray?.append(setViewControllerForTabBarItem(itemType: .Favourite))
+        viewControllersArray?.append(setViewControllerForTabBarItem(itemType: .CategoryTV))
         viewControllers = viewControllersArray
     }
     

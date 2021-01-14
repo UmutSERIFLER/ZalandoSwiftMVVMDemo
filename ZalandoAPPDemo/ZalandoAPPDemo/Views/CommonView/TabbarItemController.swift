@@ -16,7 +16,7 @@ struct TabbarItemController {
 
     init(itemType: TabBarItems) {
         switch itemType {
-        case .Category:
+        case .CategoryCV:
             self.controllerName = CategoryViewController.identifier
             self.controller = CategoryViewController()
             self.imageEnabled = "category_active_icon"
@@ -26,6 +26,11 @@ struct TabbarItemController {
             self.controller = FavouriteViewController()
             self.imageEnabled = "favourite_active_icon"
             self.imageDisabled = "favourite_inactive_icon"
+        case .CategoryTV:
+            self.controllerName = CategoryTableViewController.identifier
+            self.controller = CategoryTableViewController()
+            self.imageEnabled = "category_active_icon"
+            self.imageDisabled = "category_inactive_icon"
         }
     }
 }
