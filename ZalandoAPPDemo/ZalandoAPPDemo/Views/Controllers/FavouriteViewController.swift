@@ -24,7 +24,7 @@ class FavouriteViewController: UIViewController {
         view.addSubview(favouriteCollectionView)
         favouriteCollectionView.translatesAutoresizingMaskIntoConstraints = false
         favouriteCollectionView.frame = view.frame
-        // Do any additional setup after loading the view.
+        self.title = "Favourite Products"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +41,6 @@ fileprivate extension FavouriteViewController {
             if let productCell: ProductCollectionViewCell = self?.favouriteCollectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell, let product = productCell.product {
                 DispatchQueue.main.async {
                     self?.navigationController?.pushViewController(ProductDetailViewController(product: product), animated: true)
-                    
                 }
             }
         }
