@@ -28,7 +28,7 @@ class CategoryViewModelTest: XCTestCase {
         apiService.catalogResponseModel = ResourceLoader.catalog
         apiService.testForStatus = forStatus
         apiService.errorResponse = ZalandoErrorResponseModel()
-        apiService.getCatalogProducts { [weak self] result in
+        apiService.getCatalogProducts(for: "") { [weak self] (result) in
             self?.categoryViewModel = CategoryViewModel(catalog)
         }
         XCTAssertEqual(categoryViewModel.categoryResponse?.result.first?.title, catalog?.result.first?.title)

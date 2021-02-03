@@ -22,15 +22,20 @@ class CategoryViewModel: ViewModelProtocol {
     
     init(_ catalog: CatalogResponseModel? = nil,_ apiService: ZalandoAPIProviderProtocol = ZalandoAPIProvider()) {
         self.apiService = apiService
+        self.categoryResponse = catalog
     }
     
-    func getCategoryProducts() {
-        apiService.getCatalogProducts { (result) in
+    func getCategoryProducts(for path: String = "") {
+        apiService.getCatalogProducts(for: path) { [weak self] (result) in
             switch result {
-                case .success(let result):
-                    self.categoryResponse = result
+            case .success(var result):
+                guard let categoryResponse = self?.categoryResponse else {
+                    self?.categoryResponse = result
+                    return
+                }
+                self?.categoryResponse = result.updateData(result: categoryResponse)
             case .failure(let error):
-                self.showAlertClosure(error.localizedDescription)
+                self?.showAlertClosure(error.localizedDescription)
             }
         }
     }
@@ -40,5 +45,13 @@ class CategoryViewModel: ViewModelProtocol {
             return self.categoryResponse?.result ?? []
         }
         return (filter == "Clear") ? self.categoryResponse?.result ?? [] : self.categoryResponse?.result.filter({$0.category == filter}) ?? []
+    }
+    
+    func fetchData(indexPath: IndexPath) {
+        guard let productCount = self.categoryResponse?.result.count else { return }
+        guard let path = self.categoryResponse?.next?.split(separator: "/").last else { return }
+        if (productCount < 15) || ((productCount - indexPath.row) == 10){
+            getCategoryProducts(for: String(path))
+        }
     }
 }

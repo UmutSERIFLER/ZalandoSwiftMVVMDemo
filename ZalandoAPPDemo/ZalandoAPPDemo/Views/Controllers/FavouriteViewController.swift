@@ -39,7 +39,7 @@ fileprivate extension FavouriteViewController {
     func setUpDataSource() -> ProductDataSource? {
         guard let collectionView = favouriteCollectionView else { return nil }
         let dataSource = ProductDataSource(collectionView: collectionView, array: [FavouriteProducts().getProducts()], cellConfig: [CellConfigModel(cellHeight: 300)])
-        dataSource.collectionItemSelectionHandler = { [weak self] indexPath in
+        dataSource.collectionItemSelectionFetchHandler = { [weak self] (indexPath, isSelected) in
             if let productCell: ProductCollectionViewCell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell, let product = productCell.product {
                 DispatchQueue.main.async {
                     self?.navigationController?.pushViewController(ProductDetailViewController(product: product), animated: true)

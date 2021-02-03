@@ -13,3 +13,10 @@ struct CatalogResponseModel: Decodable {
     var prev: String?
     var total: Int
 }
+
+extension CatalogResponseModel {
+    mutating func updateData(result: CatalogResponseModel) -> CatalogResponseModel {
+        let products = self.result + result.result
+        return CatalogResponseModel(result: products, next: self.next, prev: self.prev, total: self.total)
+    }
+}

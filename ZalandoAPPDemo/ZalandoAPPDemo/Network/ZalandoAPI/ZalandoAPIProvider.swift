@@ -26,7 +26,7 @@ fileprivate enum ZalandoErrorTypes {
 
 protocol ZalandoAPIProviderProtocol {
     func genericParser<M>(_ data: Data?, _ response: URLResponse?, _ error: Error?, completionHandler: @escaping (Result<M, ZalandoErrorResponseModel>) -> ()) where M : Decodable
-    func getCatalogProducts(completionHandler: @escaping (Result<CatalogResponseModel, ZalandoErrorResponseModel>) -> ())
+    func getCatalogProducts(for: String, completionHandler: @escaping (Result<CatalogResponseModel, ZalandoErrorResponseModel>) -> ())
     func getCategory(completionHandler: @escaping (Result<CategoryResponseModels, ZalandoErrorResponseModel>) -> ())
 }
 
@@ -83,8 +83,8 @@ struct ZalandoAPIProvider: ZalandoAPIProviderProtocol {
     /// Get Catalog Products
     /// - Parameter completionHandler: Result<CatalogResponseModel, ZalandoErrorResponseModel>
     /// - Returns: Result<CatalogResponseModel, ZalandoErrorResponseModel>
-    func getCatalogProducts(completionHandler: @escaping (Result<CatalogResponseModel, ZalandoErrorResponseModel>) -> ()) {
-        router.request(.catalog) { (data, response, error) in
+    func getCatalogProducts(for path: String, completionHandler: @escaping (Result<CatalogResponseModel, ZalandoErrorResponseModel>) -> ()) {
+        router.request(.catalog(path: path)) { (data, response, error) in
             self.genericParser(data, response, error) { (result) in
                 completionHandler(result)
             }

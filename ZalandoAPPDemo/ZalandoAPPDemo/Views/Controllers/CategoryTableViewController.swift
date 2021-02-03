@@ -62,11 +62,16 @@ fileprivate extension CategoryTableViewController {
             return nil
         }
         let dataSource = ProductTVDataSource(tableView: tableView, array: [products], cellConfig: [CellConfigModel(cellHeight: 100)])
-        dataSource.tableItemSelectionHandler = { [weak self] indexPath in
-            if let productCell: ProductTableViewCell = tableView.cellForRow(at: indexPath) as? ProductTableViewCell, let product = productCell.product {
-                DispatchQueue.main.async {
-                    self?.navigationController?.pushViewController(ProductDetailViewController(product: product), animated: true)
+    
+        dataSource.tableItemSelectionFetchHandler = { [weak self] (indexPath, isSelected) in
+            if isSelected {
+                if let productCell: ProductTableViewCell = tableView.cellForRow(at: indexPath) as? ProductTableViewCell, let product = productCell.product {
+                    DispatchQueue.main.async {
+                        self?.navigationController?.pushViewController(ProductDetailViewController(product: product), animated: true)
+                    }
                 }
+            } else {
+                self?.categoryTableViewModel?.fetchData(indexPath: indexPath)
             }
         }
         return dataSource

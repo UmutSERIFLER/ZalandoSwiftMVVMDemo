@@ -10,6 +10,7 @@ import Foundation
 
 final class MockAPIService: ZalandoAPIProviderProtocol {
     
+    
     var testForStatus = false
     var errorResponse: ZalandoErrorResponseModel!
     var catalogResponseModel: CatalogResponseModel!
@@ -18,7 +19,7 @@ final class MockAPIService: ZalandoAPIProviderProtocol {
         
     }
     
-    func getCatalogProducts(completionHandler: @escaping (Result<CatalogResponseModel, ZalandoErrorResponseModel>) -> ()) {
+    func getCatalogProducts(for: String, completionHandler: @escaping (Result<CatalogResponseModel, ZalandoErrorResponseModel>) -> ()) {
         if testForStatus {
             completionHandler(.success(catalogResponseModel))
         } else {
