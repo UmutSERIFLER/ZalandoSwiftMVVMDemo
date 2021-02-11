@@ -9,7 +9,7 @@ import Foundation
 
 public enum ZalandoAPI {
     case category
-    case catalog
+    case catalog(path: String)
 }
 
 fileprivate enum ZalandoServiceTitles: String {
@@ -30,8 +30,8 @@ extension ZalandoAPI: EndPointType {
         switch self {
         case .category:
             return ZalandoServiceTitles.category.rawValue
-        case .catalog:
-            return ZalandoServiceTitles.catalog.rawValue
+        case .catalog(let path):
+            return (path.isEmpty) ? ZalandoServiceTitles.catalog.rawValue : path
         }
     }
     

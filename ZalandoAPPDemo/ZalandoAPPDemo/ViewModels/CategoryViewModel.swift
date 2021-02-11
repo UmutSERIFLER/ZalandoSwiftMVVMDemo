@@ -18,19 +18,23 @@ class CategoryViewModel: ViewModelProtocol {
         }
     }
     
-    private(set) var artistName: String?
-    
     init(_ catalog: CatalogResponseModel? = nil,_ apiService: ZalandoAPIProviderProtocol = ZalandoAPIProvider()) {
         self.apiService = apiService
+        self.categoryResponse = catalog
     }
     
-    func getCategoryProducts() {
-        apiService.getCatalogProducts { (result) in
+    func getCategoryProducts(for path: String = "") {
+        apiService.getCatalogProducts(for: path) { [weak self] (result) in
             switch result {
-                case .success(let result):
-                    self.categoryResponse = result
+            case .success(let result):
+                result.result.forEach({print($0.item_id)})
+                if self?.categoryResponse == nil {
+                    self?.categoryResponse = result
+                    return
+                }
+                self?.categoryResponse?.updateData(result: result)
             case .failure(let error):
-                self.showAlertClosure(error.localizedDescription)
+                self?.showAlertClosure(error.localizedDescription)
             }
         }
     }
@@ -40,5 +44,13 @@ class CategoryViewModel: ViewModelProtocol {
             return self.categoryResponse?.result ?? []
         }
         return (filter == "Clear") ? self.categoryResponse?.result ?? [] : self.categoryResponse?.result.filter({$0.category == filter}) ?? []
+    }
+    
+    func fetchData(indexPath: IndexPath) {
+        guard let productCount = self.categoryResponse?.result.count else { return }
+        guard let path = self.categoryResponse?.next?.split(separator: "/").last else { return }
+        if (productCount < 15) || ((productCount - indexPath.row) == 10) {
+            getCategoryProducts(for: String(path))
+        }
     }
 }

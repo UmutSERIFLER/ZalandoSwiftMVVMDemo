@@ -13,3 +13,12 @@ struct CatalogResponseModel: Decodable {
     var prev: String?
     var total: Int
 }
+
+extension CatalogResponseModel {
+    mutating func updateData(result: CatalogResponseModel) {
+        self.result.append(contentsOf: result.result)
+        self.next = result.next
+        self.prev = result.prev
+        self.total = result.total
+    }
+}

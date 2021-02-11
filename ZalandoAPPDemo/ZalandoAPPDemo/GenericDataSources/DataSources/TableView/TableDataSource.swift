@@ -7,16 +7,17 @@
 
 import UIKit
 
-public typealias TableItemSelectionHandlerType = (IndexPath) -> Void
+public typealias TableItemSelectionFetchHandlerType = (IndexPath, Bool) -> Void
 
 open class TableDataSource<Provider: GenericDataProvider, Cell: UITableViewCell>:
     NSObject,
     UITableViewDataSource,
+    UITableViewDataSourcePrefetching,
     UITableViewDelegate where Cell: ConfigurableCell, Provider.T == Cell.T
 {
     
     // MARK: - Delegates
-    public var tableItemSelectionHandler: TableItemSelectionHandlerType?
+    public var tableItemSelectionFetchHandler: TableItemSelectionFetchHandlerType?
     
     // MARK: - Private Properties
     let provider: Provider
@@ -33,6 +34,7 @@ open class TableDataSource<Provider: GenericDataProvider, Cell: UITableViewCell>
     func setUp() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.prefetchDataSource = self
         tableView.reloadData()
     }
     
@@ -56,6 +58,11 @@ open class TableDataSource<Provider: GenericDataProvider, Cell: UITableViewCell>
         return cell
     }
     
+    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        guard let indexPath = indexPaths.first else { return }
+        tableItemSelectionFetchHandler?(indexPath, false)
+    }
+    
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(provider.getCellHeight(in: indexPath.section))
     }
@@ -70,7 +77,7 @@ open class TableDataSource<Provider: GenericDataProvider, Cell: UITableViewCell>
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableItemSelectionHandler?(indexPath)
+        tableItemSelectionFetchHandler?(indexPath, true)
     }
     
 }

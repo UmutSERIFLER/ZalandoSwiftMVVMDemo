@@ -39,7 +39,7 @@ class CategoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.categoryViewModel?.getCategoryProducts()
+
     }
     
     // Initiliase View Model Actions
@@ -55,6 +55,7 @@ class CategoryViewController: UIViewController {
             guard let errorMessage = errorMessage else { return }
             self?.showAlert(withMessage: errorMessage)
         }
+        self.categoryViewModel?.getCategoryProducts()
     }
     
     @objc func sortList() {
@@ -83,11 +84,15 @@ fileprivate extension CategoryViewController {
             return nil
         }
         let dataSource = ProductDataSource(collectionView: collectionView, array: [products], cellConfig: [CellConfigModel(cellHeight: 300)])
-        dataSource.collectionItemSelectionHandler = { [weak self] indexPath in
-            if let productCell: ProductCollectionViewCell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell, let product = productCell.product {
-                DispatchQueue.main.async {
-                    self?.navigationController?.pushViewController(ProductDetailViewController(product: product), animated: true)
+        dataSource.collectionItemSelectionFetchHandler = { [weak self] (indexPath, isSelected) in
+            if isSelected {
+                if let productCell: ProductCollectionViewCell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell, let product = productCell.product {
+                    DispatchQueue.main.async {
+                        self?.navigationController?.pushViewController(ProductDetailViewController(product: product), animated: true)
+                    }
                 }
+            } else {
+                self?.categoryViewModel?.fetchData(indexPath: indexPath)
             }
         }
         return dataSource

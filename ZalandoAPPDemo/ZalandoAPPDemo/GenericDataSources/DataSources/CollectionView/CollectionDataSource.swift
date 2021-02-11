@@ -7,17 +7,18 @@
 
 import UIKit
 
-public typealias CollectionItemSelectionHandlerType = (IndexPath) -> Void
+public typealias CollectionItemSelectionFetchHandlerType = (IndexPath, Bool) -> Void
 
 open class CollectionDataSource<Provider: GenericDataProvider, Cell: UICollectionViewCell>:
     NSObject,
     UICollectionViewDataSource,
     UICollectionViewDelegate,
+    UICollectionViewDataSourcePrefetching,
     UICollectionViewDelegateFlowLayout
     where Cell: ConfigurableCell, Provider.T == Cell.T
 {
     // MARK: - Delegates
-    public var collectionItemSelectionHandler: CollectionItemSelectionHandlerType?
+    public var collectionItemSelectionFetchHandler: CollectionItemSelectionFetchHandlerType?
 
     // MARK: - Private Properties
     let provider: Provider
@@ -34,6 +35,7 @@ open class CollectionDataSource<Provider: GenericDataProvider, Cell: UICollectio
     func setUp() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.prefetchDataSource = self
     }
 
     // MARK: - UICollectionViewDataSource
@@ -66,10 +68,15 @@ open class CollectionDataSource<Provider: GenericDataProvider, Cell: UICollectio
     {
         return UICollectionReusableView(frame: CGRect.zero)
     }
+    
+    public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        guard let indexPath = indexPaths.first else { return }
+        collectionItemSelectionFetchHandler?(indexPath, false)
+    }
 
     // MARK: - UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionItemSelectionHandler?(indexPath)
+        collectionItemSelectionFetchHandler?(indexPath, true)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

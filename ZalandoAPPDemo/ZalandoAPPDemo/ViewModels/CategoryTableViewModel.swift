@@ -18,24 +18,34 @@ class CategoryTableViewModel: ViewModelProtocol {
         }
     }
     
-    private(set) var artistName: String?
-    
     init(_ catalog: CatalogResponseModel? = nil,_ apiService: ZalandoAPIProviderProtocol = ZalandoAPIProvider()) {
         self.apiService = apiService
     }
     
-    func getCategoryProducts() {
-        apiService.getCatalogProducts { (result) in
+    func getCategoryProducts(for path: String = "") {
+        apiService.getCatalogProducts(for: path) { [weak self] (result) in
             switch result {
-                case .success(let result):
-                    self.categoryResponse = result
+            case .success(let result):
+                if self?.categoryResponse == nil {
+                    self?.categoryResponse = result
+                    return
+                }
+                self?.categoryResponse?.updateData(result: result)
             case .failure(let error):
-                self.showAlertClosure(error.localizedDescription)
+                self?.showAlertClosure(error.localizedDescription)
             }
         }
     }
     
     func getProducts() -> [Product] {
         return self.categoryResponse?.result ?? []
+    }
+    
+    func fetchData(indexPath: IndexPath) {
+        guard let productCount = self.categoryResponse?.result.count else { return }
+        guard let path = self.categoryResponse?.next?.split(separator: "/").last else { return }
+        if (productCount < 15) || ((productCount - indexPath.row) == 10){
+            getCategoryProducts(for: String(path))
+        }
     }
 }

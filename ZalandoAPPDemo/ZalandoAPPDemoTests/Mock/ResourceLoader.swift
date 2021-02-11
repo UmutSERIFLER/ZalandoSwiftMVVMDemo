@@ -15,8 +15,6 @@ struct ResourceLoader {
         guard let url = Bundle.main.url(forResource: name, withExtension: "json") else {
             return nil
         }
-        
         return try? JSONDecoder().decode(ModelType.self, from: Data(contentsOf: url))
-
     }
 }
