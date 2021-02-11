@@ -39,7 +39,7 @@ class CategoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.categoryViewModel?.getCategoryProducts()
+
     }
     
     // Initiliase View Model Actions
@@ -55,6 +55,7 @@ class CategoryViewController: UIViewController {
             guard let errorMessage = errorMessage else { return }
             self?.showAlert(withMessage: errorMessage)
         }
+        self.categoryViewModel?.getCategoryProducts()
     }
     
     @objc func sortList() {

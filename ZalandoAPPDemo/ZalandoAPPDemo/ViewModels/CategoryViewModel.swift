@@ -26,12 +26,13 @@ class CategoryViewModel: ViewModelProtocol {
     func getCategoryProducts(for path: String = "") {
         apiService.getCatalogProducts(for: path) { [weak self] (result) in
             switch result {
-            case .success(var result):
-                guard let categoryResponse = self?.categoryResponse else {
+            case .success(let result):
+                result.result.forEach({print($0.item_id)})
+                if self?.categoryResponse == nil {
                     self?.categoryResponse = result
                     return
                 }
-                self?.categoryResponse = result.updateData(result: categoryResponse)
+                self?.categoryResponse?.updateData(result: result)
             case .failure(let error):
                 self?.showAlertClosure(error.localizedDescription)
             }
@@ -48,7 +49,7 @@ class CategoryViewModel: ViewModelProtocol {
     func fetchData(indexPath: IndexPath) {
         guard let productCount = self.categoryResponse?.result.count else { return }
         guard let path = self.categoryResponse?.next?.split(separator: "/").last else { return }
-        if (productCount < 15) || ((productCount - indexPath.row) == 10){
+        if (productCount < 15) || ((productCount - indexPath.row) == 10) {
             getCategoryProducts(for: String(path))
         }
     }

@@ -15,8 +15,10 @@ struct CatalogResponseModel: Decodable {
 }
 
 extension CatalogResponseModel {
-    mutating func updateData(result: CatalogResponseModel) -> CatalogResponseModel {
-        let products = self.result + result.result
-        return CatalogResponseModel(result: products, next: self.next, prev: self.prev, total: self.total)
+    mutating func updateData(result: CatalogResponseModel) {
+        self.result.append(contentsOf: result.result)
+        self.next = result.next
+        self.prev = result.prev
+        self.total = result.total
     }
 }

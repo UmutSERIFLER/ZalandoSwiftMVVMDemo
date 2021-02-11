@@ -25,12 +25,12 @@ class CategoryTableViewModel: ViewModelProtocol {
     func getCategoryProducts(for path: String = "") {
         apiService.getCatalogProducts(for: path) { [weak self] (result) in
             switch result {
-            case .success(var result):
-                guard let categoryResponse = self?.categoryResponse else {
+            case .success(let result):
+                if self?.categoryResponse == nil {
                     self?.categoryResponse = result
                     return
                 }
-                self?.categoryResponse = result.updateData(result: categoryResponse)
+                self?.categoryResponse?.updateData(result: result)
             case .failure(let error):
                 self?.showAlertClosure(error.localizedDescription)
             }

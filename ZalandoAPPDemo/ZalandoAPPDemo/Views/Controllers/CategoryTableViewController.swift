@@ -33,7 +33,6 @@ class CategoryTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.categoryTableViewModel?.getCategoryProducts()
     }
     
     // Initiliase View Model Actions
@@ -48,6 +47,7 @@ class CategoryTableViewController: UIViewController {
             guard let errorMessage = errorMessage else { return }
             self?.showAlert(withMessage: errorMessage)
         }
+        self.categoryTableViewModel?.getCategoryProducts()
     }
     
 
