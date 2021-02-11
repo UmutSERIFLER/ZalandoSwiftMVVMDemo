@@ -18,8 +18,6 @@ class CategoryViewModel: ViewModelProtocol {
         }
     }
     
-    private(set) var artistName: String?
-    
     init(_ catalog: CatalogResponseModel? = nil,_ apiService: ZalandoAPIProviderProtocol = ZalandoAPIProvider()) {
         self.apiService = apiService
         self.categoryResponse = catalog
